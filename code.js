@@ -46,7 +46,19 @@ function obtenerDatosDelUsuario() {
   const edad = calculoEdad();
 
   const ciudad = prompt("Ingrese su Ciudad:");
-  const interesJs = confirm("Esta interesado en JavaScript");
+
+  function BooleanToString(){
+    let pregunta = confirm("Esta interesado en JavaScript");
+    if (pregunta) {
+      pregunta = "Si";
+    } else {
+      pregunta= "No";
+    }
+
+    return pregunta;
+  }
+
+  const interesJs = BooleanToString();
 
   datosPersona.nombre = nombre;
   datosPersona.edad = edad;
@@ -82,21 +94,15 @@ function recorrerListadoYRenderizarTarjetas() {
   materias.innerHTML = "";
 
   listado.forEach((materia) => {
-    materias.innerHTML += `<ul "card-header">
-    <li class="caja">
-      <img src="${materia.imgUrl}" alt="${materia.lenguajes}"
-    </li>
-    <li class="caja">
-      <p class="lenguajes">
-      ${materia.lenguajes}
-      </p>
-    </li>
-    <li class="caja">
-    <p class="lenguajes">
-    ${materia.bimestre}
-    </p>
-    </li>
-  </ul>"`;
+    materias.innerHTML += `
+    <div class="caja">
+          <img src="${materia.imgUrl}" alt="${materia.lenguajes}"
+          <p class="lenguajes">
+          Lenguajes: ${materia.lenguajes}
+          </p>
+        <p class="lenguajes">
+        Bimestre: ${materia.bimestre}
+  </div>`;
   });
 
 
@@ -106,10 +112,21 @@ function recorrerListadoYRenderizarTarjetas() {
 function alternarColorTema() {
   /* --------------------- PUNTO 4: Escribe tu codigo aqui --------------------- */
  
-  
-
-
+  const sitio = document.getElementById("sitio");
+  sitio.classList.toggle("dark");
 }
 
 /* --------------------- PUNTO 5: Escribe tu codigo aqui --------------------- */
 
+
+function funcionF (){
+
+  const sobreMi = document.getElementById("sobre-mi")
+  window.addEventListener("keydown", (e) => {
+    if (e.key ==="f" || e.key==="F") {
+      sobreMi.classList.remove("oculto");
+    }
+  }
+  )
+}
+funcionF();
